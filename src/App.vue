@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import Header from './components/Header.vue';
 </script>
 
 <template>
-  <h1>top</h1>
+  <Header />
+  <router-vue />
 </template>
 
 <style>
+@import "https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css";
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
