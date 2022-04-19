@@ -25,8 +25,7 @@ import LoginButton from "./LoginButton.vue";
     flex-wrap: wrap;
 }
 
-.displayName,
-button {
+.displayName button {
     white-space: nowrap;
 }
 

@@ -4,7 +4,7 @@ import Header from './components/Header.vue';
 
 <template>
   <Header />
-  <router-vue />
+  <router-view />
 </template>
 
 <style>
@@ -16,7 +16,7 @@ import Header from './components/Header.vue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   margin-top: 60px;
 }
 </style>
