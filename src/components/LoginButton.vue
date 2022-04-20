@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="google-button">
+    <button type="button" class="google-button" @click="signIn()">
         <span class="google-button__icon">
             <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -21,6 +21,10 @@
 </template>
 
 <script setup lang='ts'>
+import { useAuthStore } from '../stores/auth';
+
+
+const { signIn } = useAuthStore();
 </script>
 
 <style scoped>

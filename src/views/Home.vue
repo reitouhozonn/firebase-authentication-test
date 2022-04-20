@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <h1>Hello, {{ guest }}</h1>
+        <h1>Hello, {{ state.isLoggedIn ? state.displayName : guest }}</h1>
         <p>
             This is a example of an article.
         </p>
@@ -15,14 +15,16 @@
                     target="_blank" rel="noopener">Zenn Article</a></li>
         </ul> -->
         <br>
-        <p>Copyright © 2022 reitouhozonn All Rights Reserved.</p>
+        <p>© 2022 reitouhozonn</p>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useAuthStore } from '../stores/auth';
 
-const guest = ref('gest!');
+const guest = 'Gest';
+
+const { state } = useAuthStore();
 
 </script>
 

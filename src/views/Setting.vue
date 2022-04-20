@@ -9,15 +9,30 @@
             <label>photoURL</label>
             <input type="text" v-model="photoURL" />
         </div>
-        <button>Update</button>
+        <button @click="update()">Update</button>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useAuthStore } from '../stores/auth';
+
+const { state, updateUser } = useAuthStore();
 
 const displayName = ref("");
 const photoURL = ref("");
+
+const update = () => {
+    updateUser({
+        displayName: displayName.value,
+        photoURL: photoURL.value
+    })
+}
+
+watchEffect(() => {
+    displayName.value = state.displayName;
+    photoURL.value = state.photoURL;
+})
 
 </script>
 
