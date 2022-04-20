@@ -7,15 +7,6 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
 
-// type DummyUser = {
-//     displayName: string;
-//     photoURL: string;
-// }
-// const dummyUser = {
-//     displayName: "test name",
-//     photoURL: 'https://pbs.twimg.com/profile_images/1308010958862905345/-SGZioPb_400x400.jpg'
-// }
-
 const authStore = () => {
     console.log('init authStore')
     // const auth = getAuth()
@@ -37,7 +28,6 @@ const authStore = () => {
     const signIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
-        // setUser(dummyUser)
     }
 
     const signOut = () => firebase.auth().signOut()

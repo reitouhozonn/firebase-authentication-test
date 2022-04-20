@@ -18,7 +18,7 @@ import User from './User.vue';
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 10px 0;
+    padding: 50px 0;
 }
 
 p {

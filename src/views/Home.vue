@@ -7,22 +7,19 @@
         <p>
             Vue3 + Composition API + store pattern + Firebase Auth
         </p>
-        <h3>Related links</h3>
-        <!-- <ul>
-            <li><a href="https://github.com/ErgoFriend/vue-firebase-authl" target="_blank" rel="noopener">GitHub
-                    Repo</a></li>
-            <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
-                    target="_blank" rel="noopener">Zenn Article</a></li>
-        </ul> -->
-        <br>
-        <p>© 2022 reitouhozonn</p>
+        <div v-if="state.isLoggedIn">
+            <h2>Login Success!!</h2>
+        </div>
+        <div v-else>
+            <h3>Please Login</h3>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { useAuthStore } from '../stores/auth';
 
-const guest = 'Gest';
+const guest = 'Guest!';
 
 const { state } = useAuthStore();
 
@@ -45,5 +42,9 @@ li {
 
 a {
     color: #42b983;
+}
+
+.hello {
+    margin-top: 20vh;
 }
 </style>

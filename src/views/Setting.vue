@@ -43,6 +43,10 @@ watchEffect(() => {
     align-items: center;
 }
 
+.view {
+    margin-top: 20vh;
+}
+
 label {
     flex: 1;
 }
