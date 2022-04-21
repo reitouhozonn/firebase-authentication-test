@@ -34,6 +34,6 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
 createApp(App)
-    .use(router)
     .provide(authStoreKey, authStore())
+    .use(router)
     .mount('#app')

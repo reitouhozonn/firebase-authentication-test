@@ -8,9 +8,6 @@ import "firebase/compat/auth";
 
 
 const authStore = () => {
-    console.log('init authStore')
-    // const auth = getAuth()
-
     const state = reactive({
         isLoggedIn: false,
         displayName: '',
