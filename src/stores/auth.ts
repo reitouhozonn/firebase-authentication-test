@@ -1,46 +1,56 @@
 import { inject, InjectionKey, reactive } from "vue"
 
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-
+import { GoogleAuthProvider } from "firebase/auth";
+import firebaseInstance from "../firebase";
+import {
+    getAuth,
+    onAuthStateChanged,
+    signInWithPopup,
+    signOut,
+    updateProfile,
+    User
+} from "firebase/auth";
 
 const authStore = () => {
+
+    const auth = getAuth(firebaseInstance);
+
     const state = reactive({
         isLoggedIn: false,
-        displayName: '',
-        photoURL: ''
+        displayName: "",
+        photoURL: ""
     })
 
-    const setUser = (user: firebase.User | null) => {
-        state.isLoggedIn = !!user
+    const setUser = (user: User | null) => {
+        state.isLoggedIn = !!user?.displayName
         if (user) {
-            state.displayName = user.displayName ?? ''
-            state.photoURL = user.photoURL ?? ''
+            state.displayName = user.displayName ?? ""
+            state.photoURL = user.photoURL ?? ""
         }
     }
 
     const signIn = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
     }
 
-    const signOut = () => firebase.auth().signOut()
+    const signOutState = () => signOut(auth)
 
-    const updateUser = (input: { displayName?: string, photoURL?: string }) => {
-        firebase.auth().currentUser?.updateProfile(input)
-            .then(() => setUser(firebase.auth().currentUser))
+    const updateUser = (input: { displayName: string, photoURL: string }) => {
+        let user = auth.currentUser
+        if (user) {
+            updateProfile(user, input)
+                .then(() => setUser(user));
+        }
     }
 
-    firebase.auth().onAuthStateChanged((user) => setUser(user))
+    onAuthStateChanged(auth, (user) => setUser(user))
 
     return {
         state,
         setUser,
         signIn,
-        signOut,
+        signOutState,
         updateUser,
     };
 }

@@ -2,7 +2,7 @@
     <div class="user" v-if="state.isLoggedIn">
         <img class="photoURL" :src="state.photoURL" alt="" />
         <h3 class="displayName">{{ state.displayName }}</h3>
-        <button type="button" class="button is-small is-info is-outlined" @click="signOut()">
+        <button type="button" class="button is-small is-info is-outlined" @click="signOutState()">
             Sign out
         </button>
     </div>
@@ -15,7 +15,7 @@
 import { useAuthStore } from "../stores/auth";
 import LoginButton from "./LoginButton.vue";
 
-const { signOut, state } = useAuthStore();
+const { signOutState, state } = useAuthStore();
 
 
 </script>
