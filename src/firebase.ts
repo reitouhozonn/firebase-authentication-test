@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from 'firebase/firestore';
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 
 const firebaseConfig = {
@@ -15,8 +14,7 @@ const firebaseConfig = {
 
 const firebaseInstance = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebaseInstance);
-// const db = getFirestore(firebaseInstance);
+logEvent(analytics, 'notification_received');
 
 
 export default firebaseInstance;
-// export const db = getFirestore(firebaseInstance)

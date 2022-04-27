@@ -7,7 +7,6 @@ import {
     deleteDoc,
     doc,
     DocumentData,
-    getDoc,
     getDocs,
     getFirestore,
     query,
