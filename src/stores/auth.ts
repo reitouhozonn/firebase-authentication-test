@@ -36,7 +36,7 @@ const authStore = () => {
 
     const signOutState = () => signOut(auth)
 
-    const updateUser = (input: { displayName: string, photoURL: string }) => {
+    const updateUser = (input: { displayName: string }) => {
         let user = auth.currentUser
         if (user) {
             updateProfile(user, input)
